@@ -1,6 +1,8 @@
 # app-blog
 
-[Postman collection this api`s](PostManCollection.json)
+[Задеплоиный сервер для публичного доступа](http://159.89.27.209:5000/)
+
+[Коллекция Postman для проверки апи](PostManCollection.json) - стоит localhost:5000
 
 ## Руководство по API
 

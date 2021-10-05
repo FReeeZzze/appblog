@@ -2,7 +2,14 @@
 
 [Задеплоиный сервер для публичного доступа](http://159.89.27.209:5000/)
 
-[Коллекция Postman для проверки апи](PostManCollection.json) - стоит localhost:5000
+> Пользователь: {
+    "email": "maximbezrukov98@gmail.com",
+    "password": "123456asd"
+}
+
+[Коллекция Postman для проверки апи](PostManCollection.json)
+
+> Все тоже самое что и для задеплоиного сервера. Адресс поумолчанию `localhost:5000`
 
 ## Руководство по API
 

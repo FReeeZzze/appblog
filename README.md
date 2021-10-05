@@ -1,5 +1,7 @@
 # app-blog
 
+[Postman collection this api`s](PostManCollection.json)
+
 ## Руководство по API
 
 > Method: POST

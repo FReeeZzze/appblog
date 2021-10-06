@@ -50,7 +50,8 @@ const createRoutes = (app: express.Express) => {
 
   /* === запросы для точки '/api/user' контроллера UserController === */
 
-  app.get("/api/user/me", auth, UserController.getMe);
+  app.get("/api/users/me", auth, UserController.getUserById);
+  app.get("/api/users/:id", UserController.getUserById);
 
   /* === запросы для точки '/api/posts' контроллера PostController === */
 
@@ -59,6 +60,7 @@ const createRoutes = (app: express.Express) => {
   app.post("/api/posts",  auth, PostController.createPost);
 
   /* === запросы для точки '/api/files' контроллера MessageController === */
+  app.get("/api/files/:id", UploadController.getFileById);
   app.post("/api/files", [auth, multiType], UploadController.create);
 };
 

@@ -4,7 +4,10 @@ import moment from "moment-timezone";
 export interface IPost extends Document {
   author: string;
   title: string,
-  text: string | Array<Schema.Types.ObjectId>,
+  message: {
+    text: string,
+    files: Array<Schema.Types.ObjectId>,
+  },
   createdAt: Date,
   updatedAt: Date,
 }
@@ -18,7 +21,10 @@ const PostSchema: Schema = new Schema(
     title: {
       type: String,
     },
-    text: String || [{ type: Schema.Types.ObjectId, ref: "UploadFile" }],
+    message: {
+      text: String,
+      files: [{ type: Schema.Types.ObjectId, ref: "UploadFile" }]
+    },
     createdAt: {
       type: Date,
     },

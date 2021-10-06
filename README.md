@@ -62,7 +62,7 @@
 
     Аутентификация пользователя благодаря вводимым полям (email, password)
 
-    headers: { "Content-Type": "application/json", "Authorization": "Bearer `${your_token}`" }
+    headers: { "Content-Type": "application/json" }
 
     body: {
         "email": "your_email@gmail.com",
@@ -81,12 +81,6 @@
     `warn return`: 
 
         {
-            "message": "Нет авторизации"
-        }
-
-            or
-
-        {
             "message": "Пользователь не найден!"
         }
 
@@ -97,7 +91,7 @@
         }
 
 > Method: GET
-- /api/user/me
+- /api/users/me
 
     Выдает в качестве результата все поля аутентифицированного пользователя
 
@@ -117,6 +111,28 @@
 
         {
             "message": "Нет авторизации"
+        }
+
+
+> Method: GET
+- /api/users/:id
+
+    Выдает в качестве результата все поля пользователя по `:id` параметру для URI строки
+
+   `success return`:
+
+        "result": {
+            "_id": "615c4eb12a13a43b78511cbc",
+            "email": "email@gmail.com",
+            "name": "Name",
+            "avatar": "url avatar"
+        },
+        "status": "success"
+
+    `warn return`: 
+
+        {
+            "message": "User not found"
         }
 
 > Method: GET
@@ -162,13 +178,16 @@
 > Method: POST
 - /api/posts
 
-    Создает новый пост c двумя полями (title, text) передаваемыми в тело, автором которого будет текущий аутентифицированный пользователь
+    Создает новый пост c двумя полями (title, message: { text: 'string', files: ['string']}) передаваемыми в тело, автором которого будет текущий аутентифицированный пользователь
     
     headers: { "Content-Type": "application/json", "Authorization": "Bearer `${your_token}`"}
 
     body: {
         "title": "Заголовок поста",
-        "text": "сообщение поста"
+        "message": {
+            "text": "сообщение поста",
+            "files": ["id_file", "another_id_file"]
+        }
     }
 
     `success return`:
@@ -176,7 +195,10 @@
         {
             "_id": "615c78b7810f04001bc117c6",
             "title": "Без заголовка",
-            "text": "текст...",
+            "message": {
+                "text": "текст...",
+                "files": ["id_1", "id_2]
+            },
             "author": "615c4eb12a13a43b78511cbc",
             "updatedAt": "2021-10-05T16:09:27.036Z",
             "createdAt": "2021-10-05T16:09:27.036Z",
@@ -211,7 +233,7 @@
 
         {
             "status": "success",
-            "file": {
+            "result": {
                 "_id": "615c59767986b834c0e5e848",
                 "filename": "previewfile.jpg",
                 "size": 517287,
@@ -234,4 +256,35 @@
 
         {
             message: some error message server
+        }
+
+> Method: GET
+- /api/files/:id
+
+    Выводит файл по параметру `:id` для URI строки
+
+    `example`:  /api/files/615c59767986b834c0e5e848
+
+    `success return`:
+
+        {
+            "status": "success",
+            "result": {
+                "_id": "615c59767986b834c0e5e848",
+                "filename": "previewfile.jpg",
+                "size": 517287,
+                "ext": "jpg",
+                "url": "public\\uploads\\fileData-1633442166153f2b1bfa9\\image-jpeg\\fileData-1633442166153f2b1bfa9.jpg",
+                "user": "615c4eb12a13a43b78511cbc",
+                "updatedAt": "2021-10-05T13:56:06.168Z",
+                "createdAt": "2021-10-05T13:56:06.168Z",
+                "__v": 0
+            }
+        }
+
+    `warn return`:
+
+        {
+            "message": "File not found",
+            "status": "warn"
         }

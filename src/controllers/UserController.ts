@@ -11,10 +11,10 @@ declare module 'express-serve-static-core' {
 }
 
 class UserController {
-  getMe = async (req: express.Request, res: express.Response) => {
+  getUserById = async (req: express.Request, res: express.Response) => {
     try {
-      const myId: string = req.user.userId;
-      const user = await UserModel.findById(myId,  '_id username email name avatar').exec();
+      const id: string = req.params.id ? req.params.id : req.user.userId;
+      const user = await UserModel.findById(id,  '_id username email name avatar').exec();
       if (!user) {
         return res.status(404).json({
           message: "User not found",

@@ -13,7 +13,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTVjNGViMTJhMTNhNDNiNzg1MTFjYmMiLCJpYXQiOjE2MzM0Mzk0NDIsImV4cCI6MTYzMzQ0MzA0Mn0.zuV_HNCAprHGlQIgFrVHkOSbLyQxohp7coxW39F7oxg",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTVjNGViMTJhMTNhNDNiNzg1MTFjYmMiLCJpYXQiOjE2MzM1MjAzMDUsImV4cCI6MTYzMzUyMzkwNX0.jBLnsRculZ696a_x9EzT1XhKc451ogHns29txfD7uLc",
 							"type": "string"
 						}
 					]
@@ -22,7 +22,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"44\",\r\n    \"text\": \"Всем привет, меня зовут...\"\r\n}",
+					"raw": "{\r\n    \"title\": \"Вау круто бла бла\",\r\n    \"message\": {\r\n        \"text\": \"Всем привет, меня зовут...\",\r\n        \"files\": [\"615d8cf527d5574ad046c076\"]\r\n    }\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -52,7 +52,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTVjNGViMTJhMTNhNDNiNzg1MTFjYmMiLCJpYXQiOjE2MzM0Mzk0NDIsImV4cCI6MTYzMzQ0MzA0Mn0.zuV_HNCAprHGlQIgFrVHkOSbLyQxohp7coxW39F7oxg",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTVjNGViMTJhMTNhNDNiNzg1MTFjYmMiLCJpYXQiOjE2MzM1MjA4NjgsImV4cCI6MTYzMzUyNDQ2OH0.Rf1BfWCWqi14jW_em9JPc2PSsiAeP4pMIxw25DUVsKE",
 							"type": "string"
 						}
 					]
@@ -60,14 +60,71 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"44\",\r\n    \"text\": \"Всем привет, меня зовут...\"\r\n}",
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "fileData",
+							"type": "file",
+							"src": "/C:/Users/freee/OneDrive/Изображения/previewfile_1291928527.jpg"
+						}
+					],
 					"options": {
 						"raw": {
 							"language": "json"
 						}
 					}
 				},
+				"url": {
+					"raw": "http://localhost:5000/api/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"files"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Загрузить медиа Copy",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTVjNGViMTJhMTNhNDNiNzg1MTFjYmMiLCJpYXQiOjE2MzM0Mzk0NDIsImV4cCI6MTYzMzQ0MzA0Mn0.zuV_HNCAprHGlQIgFrVHkOSbLyQxohp7coxW39F7oxg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/files/615d8cf527d5574ad046c076",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"files",
+						"615d8cf527d5574ad046c076"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Показать все посты текущей страницы",
+			"request": {
+				"method": "GET",
+				"header": [],
 				"url": {
 					"raw": "http://localhost:5000/api/posts",
 					"protocol": "http",
@@ -84,44 +141,21 @@
 			"response": []
 		},
 		{
-			"name": "Показать все посты текущей страницы",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:5000/api/posts/3",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"api",
-						"posts",
-						"3"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Получить свой профиль",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTVjNGViMTJhMTNhNDNiNzg1MTFjYmMiLCJpYXQiOjE2MzM0NDkxNzcsImV4cCI6MTYzMzQ1Mjc3N30.PI-qs07_hhreUbPmeEYtMeI5CKhMMrKycBFxaDur2rk",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -134,7 +168,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:5000/api/posts/3",
+					"raw": "http://localhost:5000/api/user/me",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -142,8 +176,8 @@
 					"port": "5000",
 					"path": [
 						"api",
-						"posts",
-						"3"
+						"user",
+						"me"
 					]
 				}
 			},

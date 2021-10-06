@@ -55,7 +55,7 @@ class PostController {
 
       const postData = {
         title: req.body.title,
-        text: req.body.text,
+        message: req.body.message,
         author: myId,
       };
 
@@ -63,7 +63,7 @@ class PostController {
         postData.title = 'Без заголовка'
       } 
 
-      if (!postData.text) {
+      if (!postData.message.text) {
         return res.status(400).json({
           status: 'warn',
           message: 'Вы не заполнили поле текст'

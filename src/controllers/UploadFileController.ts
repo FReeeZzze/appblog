@@ -31,7 +31,7 @@ class UploadController {
       .then((fileObj: IUploadFile) => {
         res.status(200).json({
           status: "success",
-          file: fileObj,
+          result: fileObj,
         });
       })
       .catch((err: any) => {
@@ -41,6 +41,27 @@ class UploadController {
         });
       });
   };
+
+  getFileById = async (req: express.Request, res: express.Response) => {
+    const id = req.params.id
+    try {
+      const file = await UploadModel.findById(id,  '_id filename size ext url user').exec();
+      if (!file) {
+        return res.status(404).json({
+          message: "File not found",
+        });
+      }
+      return res.status(200).json({
+        result: file,
+        status: 'success'
+      })
+    } catch(e: any) {
+      res.status(500).json({
+        error: e.message,
+        status: 'error'
+      })
+    }
+  }
 }
 
 export default UploadController;

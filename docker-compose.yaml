@@ -4,6 +4,11 @@ volumes:
   mongodb_database:
 
 services:
+  app-client-blog:
+    image: freeezzz/app-client-blog
+    restart: always
+    ports: 
+      - 3000:3000
   app-blog:
     image: freeezzz/app-blog
     restart: always

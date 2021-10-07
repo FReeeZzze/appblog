@@ -67,12 +67,7 @@
 							"type": "file",
 							"src": "/C:/Users/freee/OneDrive/Изображения/previewfile_1291928527.jpg"
 						}
-					],
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:5000/api/files",
@@ -90,7 +85,7 @@
 			"response": []
 		},
 		{
-			"name": "Загрузить медиа Copy",
+			"name": "Получить файл по id",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -142,6 +137,49 @@
 		},
 		{
 			"name": "Получить свой профиль",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MTVjNGViMTJhMTNhNDNiNzg1MTFjYmMiLCJpYXQiOjE2MzM0NDkxNzcsImV4cCI6MTYzMzQ1Mjc3N30.PI-qs07_hhreUbPmeEYtMeI5CKhMMrKycBFxaDur2rk",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/user/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"user",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получить пользователя по ID",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},

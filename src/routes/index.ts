@@ -29,7 +29,9 @@ const createRoutes = (app: express.Express) => {
   app.use(cookieParser());
   app.use((_req: express.Request, res: express.Response, next: express.NextFunction) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'origin, content-type, accept');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,X-Auth-Token,Authorization,Origin');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
     next();
   });
 
@@ -57,7 +59,7 @@ const createRoutes = (app: express.Express) => {
 
   app.get("/api/posts", PostController.getPosts);
   app.get("/api/posts/:page", PostController.getPosts);
-  app.post("/api/posts",  auth, PostController.createPost);
+  app.post("/api/posts", auth, PostController.createPost);
 
   /* === запросы для точки '/api/files' контроллера MessageController === */
   app.get("/api/files/:id", UploadController.getFileById);
